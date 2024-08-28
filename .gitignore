@@ -8,6 +8,7 @@
 *.userosscache
 *.sln.docstates
 
+
 # User-specific files (Mono Auto Generated)
 mono_crash.*
 
@@ -89,3 +90,4 @@ x86/
 bld/
 [Bb]in/
 [Oo]bj/
+.idea/
