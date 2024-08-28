@@ -1,0 +1,21 @@
+# This is a generated file. Not intended for manual editing.
+services:
+  api:
+    build:
+      context: "/home/paulo/RiderProjects/Geekhub"
+      dockerfile: "API/src/API/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net8.0/API.dll"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "api:dev"
+    ports: []
+    volumes:
+    - "/home/paulo/.nuget/packages:/home/app/.nuget/packages"
+    - "/home/paulo/RiderProjects/Geekhub/API/src/API:/app:rw"
+    - "/home/paulo/RiderProjects/Geekhub:/src:rw"
+    working_dir: "/app"

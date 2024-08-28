@@ -1,0 +1,66 @@
+﻿services:
+  # Api Service
+  api:
+    image: api
+    build:
+      context: .
+      dockerfile: API/src/API/Dockerfile
+  
+  # MongoDB Service
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: geekhub_mongo_database
+      MONGO_INITDB_ROOT_PASSWORD: 8)J0@5%Z6w?]AcyBy/KR
+
+  # Redis Service
+  redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - "6379:6379"
+    environment:
+      REDIS_PASSWORD: M4.e002wVDI6&Qg!b/%-
+      command: redis-server --requirepass M4.e002wVDI6&Qg!b/%-
+    volumes:
+      - redis_data:/data
+
+  # PostgreSQL Service
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: geekhub_postgres_user
+      POSTGRES_PASSWORD: Tx72j,1Gpm!+z0Lk#voa
+      POSTGRES_DB: geekhub_postgres_database
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  # MinIO Service
+  minio:
+    image: minio/minio:latest
+    container_name: minio
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      MINIO_ROOT_USER: geekhub_minio_user
+      MINIO_ROOT_PASSWORD: ZZM%N^M#E0)yl{Ns4#68
+    command: server /data --console-address ":9001"
+    volumes:
+      - minio_data:/data
+      - minio_config:/root/.minio
+
+volumes:
+  mongo_data:
+  redis_data:
+  postgres_data:
+  minio_data:
+  minio_config:
